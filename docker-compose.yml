@@ -1,0 +1,31 @@
+# Defaults to SQLite (mounted as a volume) so `docker-compose up` works with
+# zero external dependencies -- matches the "clone and run cold" requirement.
+# Swap DATABASE_URL to a postgres:// URL (and uncomment the db service below)
+# for a closer-to-production setup; no code changes needed either way.
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - FLASK_APP=run.py
+      - DATABASE_URL=sqlite:////data/dev.db
+    volumes:
+      - sqlite_data:/data
+
+  # db:
+  #   image: postgres:16-alpine
+  #   environment:
+  #     POSTGRES_USER: app
+  #     POSTGRES_PASSWORD: app
+  #     POSTGRES_DB: ai_visibility
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  sqlite_data:
+  # postgres_data:

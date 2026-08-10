@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.db
+venv/
+.venv/
+.DS_Store
+
+# Claude Code context files -- local dev/assistant notes, not for the reviewer
+CLAUDE.local.md
+CLAUDE.md

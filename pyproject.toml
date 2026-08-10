@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+# Put the project root on sys.path so `pytest tests/ -v` works on a cold clone
+# without needing PYTHONPATH set -- the README documents exactly that command.
+pythonpath = ["."]
+testpaths = ["tests"]
